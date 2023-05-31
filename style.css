@@ -1,0 +1,170 @@
+/* No CSS a altura acompanha o conteúdo*/
+
+/* Seletor universal para todos os elementos*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*Definindo variáveis pro CSS*/
+:root {
+--text-color: white;
+--bg-url:  url(./assets/background-dark.jpg);
+--border-color:  rgba(255, 255, 255, 0.5);
+--bg-color: rgba(255, 255, 255, 0.1);
+--bg-color-hover:  rgba(255, 255, 255, 0.02);
+--sl-color-hover: rgba(255, 255, 255, 0.2);
+--swich-bg-url: url(assets/moon.svg);
+}
+
+.light{
+  --text-color: black;
+  --bg-url:  url(./assets/background.jpg);
+  --border-color:  rgba(0, 0, 0, 0.5);
+  --bg-color: rgba(0, 0, 0, 0.1);
+  --bg-color-hover:  rgba(0, 0, 0, 0.2);
+  --sl-color-hover: rgba(0, 0, 0, 0.2);
+  --swich-bg-url: url(assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/background-dark.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;  topo no centro do eixo
+  background-size: cover; Cobre todo o espaço do background
+*/
+
+   /* short hand mesmo codigo acima simplificado*/
+  background: var(--bg-url) no-repeat top center/cover;
+
+}
+
+body * {
+  font-family: 'Inter', sans-serif;
+  /*Aplicando valores salvos na variável*/
+  color: var(--text-color);
+}
+
+/* Div é um elemento block*/
+#container{
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+/* img é um elemento inline para aplicar margin: auto temos que transforma-lo em block --- ou aplicar text-align na div profile*/
+#profile{
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img{
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+/*switch*/
+#switch{
+  position: relative;  /*relativisa elemento absoluto dentro dele / o position: absolute /tornando o button relativo ao elemento switch*/
+  width: 64px;  /*switch com mesma largura do span*/
+  margin: 4px auto; /*centraliza o switch*/
+}
+
+#switch button {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background: var(--swich-bg-url) white no-repeat center ;
+  border: 0;
+   /******CENTRALIZANDO POSICIONAMENTO ABSOLUTO*******/
+  position: absolute; /*sobrepoe o elemento button sobre o elemento span*/
+  top: 50%;  /*posiciona vertical do elemento na pagina*/
+  left: 0; /*posiciona orizontal do elemento na pagina*/
+  z-index: 1; /*separa o elemento em uma nova camada*/
+  transform: translateY(-50%); /*Move o elemento para cima e para baixo no eixo Y*/
+}
+
+#switch span {
+ display: block;
+ height: 24px;
+ width: 64px;
+ background:  var(--border-color);
+ border: 1px solid var(--bg-color);
+ border-radius: 99px;
+}
+
+.light #switch button {
+right: 0;
+left: initial;
+}
+
+/*links*/
+ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0px;
+}
+ul li a{
+  text-decoration: none;
+  display: flex;
+  padding: 16px 24px;
+  align-items: center;
+  justify-content: center;
+  /*Ultimo item do RGBA marca a transparencia*/
+  background-color: var(--bg-color);
+  border: solid 1px var(--border-color);
+  border-radius: 8px;
+  font-weight: 500;
+  /*Deixando a transição suave*/
+  transition: background 0.5s;
+/*acrescenta um embaçado no elemento*/
+  backdrop-filter: blur(4px);
+}
+
+/*pseudo-selector*/
+ul li a:hover{
+  background-color: var(--bg-color-hover);
+  border: solid 1.5px var(--text-color);
+}
+
+#social-links{
+  padding: 24px 0px;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+}
+
+#social-links a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background-color: var(--sl-color-hover)
+ 
+}
+
+footer{
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+
+
+
